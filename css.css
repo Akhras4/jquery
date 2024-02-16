@@ -59,6 +59,33 @@ text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
     width: 100%;
     height: 90%;
 }
+    .TimerCon{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        
+        padding: 100px;
+        gap: 20px;
+        width: 100%;
+        height: 70%;
+        border: 1px solid inherit;
+        & .Timer{
+            width: 80%;
+            height: 50%;
+            font-size: 100px;
+            justify-items: stretch;
+        }
+        & input {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        &.Start{
+            background-color: #347ab3;
+        }
+    }
+
+
 .third{
     background-image:linear-gradient(to bottom, #2cb0baa3,#32ad8c) ;
     display: none;
