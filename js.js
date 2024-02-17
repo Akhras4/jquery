@@ -19,36 +19,31 @@ $(document).ready(function () {
         $('.second').fadeIn(1000)
         $('.first, .third, .forth').css('display', 'none');
         let timer1;
-        $('.Start').on('click', function(e) {
-           /* The code you provided is setting up a timer that counts down from 26 minutes. */
-            let time = 26*60 
-             timer1 = setInterval(() => {
+        $('.Start').on('click', function (e) {
+            /* The code you provided is setting up a timer that counts down from 26 minutes. */
+            $(this).attr('disabled', true)
+            let time = 26 * 60
+            timer1 = setInterval(() => {
                 let min = Math.floor(time / 60);
                 let sec = time % 60;
-                $(".Timer").text(`${min} : ${sec < 10 ? '0' + sec : sec}`);
+                $(".Timer").text(`${min < 10 ? '0' + min : min} : ${sec < 10 ? '0' + sec : sec}`);
                 if (time == 0) {
-                    clearInterval(timer1);
-                    time = 26*60 ;
+                    time = 26 * 60;
                 } else {
                     time--;
                 }
                 if (time == 5) {
-                    $("#alarm").play()
+                    $("#alarm")[0].play()
                 }
             }, 1000);
         });
-       /* The code `$('.Reset').on('click', function(e) {
-                   clearInterval(timer1);
-                   $('.Timer').text("00:00")
-               })` is adding a click event handler to the element with the class "Reset". When this
-       element is clicked, it clears the interval of the timer (`timer1`) that was set up
-       previously. It also sets the text of the element with the class "Timer" to "00:00",
-       effectively resetting the timer display to zero. */
-        $('.Reset').on('click', function(e) {
+
+        $('.Reset').on('click', function (e) {
             clearInterval(timer1);
             $('.Timer').text("00:00")
+            $('.Start').removeAttr('disabled')
         })
-    
+
     })
     $('li:nth-child(3)').on('click', function () {
         $('.main').css('display', 'none')
@@ -62,8 +57,8 @@ $(document).ready(function () {
         $('form').addClass('logIn')
         $('form div input').attr('class', 'sub')
 
-/* The code you provided is adding event handlers to the input fields of type "text" and "password"
-within an element with the class "forth". */
+        /* The code you provided is adding event handlers to the input fields of type "text" and "password"
+        within an element with the class "forth". */
         $('.forth input[type="text"]').on('input', function (e) {
             let x = $(this).val()
             if (x.length > 8) {
@@ -77,12 +72,12 @@ within an element with the class "forth". */
             }
         })
     })
- /* The code is adding a click event handler to the element with the id "image". When this element is
- clicked, the code checks the value of its "src" attribute. If the value is
- "503181_pastedImage_2.png", it changes the "src" attribute to "nTGMV1Eo_400x400.jpg". It then
- slides up and down the element with the class "about", changes the text of the element with the
- class "titel" to "William Henry Gates III", and changes the text of the element with the class
- "description" to a description of William Henry Gates III. */
+    /* The code is adding a click event handler to the element with the id "image". When this element is
+    clicked, the code checks the value of its "src" attribute. If the value is
+    "503181_pastedImage_2.png", it changes the "src" attribute to "nTGMV1Eo_400x400.jpg". It then
+    slides up and down the element with the class "about", changes the text of the element with the
+    class "titel" to "William Henry Gates III", and changes the text of the element with the class
+    "description" to a description of William Henry Gates III. */
     $("#image").click(function () {
         if ($(this).attr("src") == "503181_pastedImage_2.png") {
             $(this).attr("src", "nTGMV1Eo_400x400.jpg");
@@ -90,8 +85,6 @@ within an element with the class "forth". */
             $('.about').slideDown(1000)
             $('.titel').text('William Henry Gates III');
             $('.description').text('is an American businessman, investor, philanthropist, and writer best known for co-founding the software giant Microsoft,along with his childhood friend Paul Allen.');
-            
-
         } else {
             $(this).attr("src", "503181_pastedImage_2.png");
             $('.about').slideUp(1)
